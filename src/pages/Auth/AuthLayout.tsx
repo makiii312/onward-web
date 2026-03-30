@@ -3,8 +3,8 @@ import './Auth.css';
 
 const AuthLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      <div className="w-full max-w-md flex flex-col items-center gap-6">
+    <div className="min-h-screen flex flex-col items-center justify-start">
+      <div className="w-full max-w-md flex flex-col items-center gap-10 mt-10">
         <img src="/src/assets/onward-logo.svg" alt="Onward Logo" />
         <Outlet />
       </div>

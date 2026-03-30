@@ -1,4 +1,4 @@
-import { BellIcon, UserCircleIcon } from '../components/Icons.tsx';
+import { BellIcon, UserCircleIcon } from '../Icons.tsx';
 
 const MainNavigation = () => {
   return (

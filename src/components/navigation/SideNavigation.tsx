@@ -4,7 +4,7 @@ import {
   ClipboardListIcon,
   AcademicCapIcon,
   CalendarIcon,
-} from '../components/Icons.tsx';
+} from '../Icons.tsx';
 
 const SideNavigation = () => {
   return (

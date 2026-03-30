@@ -1,7 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 
-import './App.css';
-
 import AuthLayout from './pages/Auth/AuthLayout.tsx';
 import DashboardLayout from './pages/Dashboard/DashboardLayout.tsx';
 
