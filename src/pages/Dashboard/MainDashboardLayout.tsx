@@ -7,12 +7,15 @@ const DashboardLayout = () => {
     <div className="min-h-screen">
       <SideNavigation />
 
-      <section className="relative min-h-full w-[85%] ml-[15%]">
-        <MainHeader />
-        <main className="flex flex-col gap-y-16">
+      <div className="ml-[15%]">
+        <div className="h-58.75 bg-linear-to-t from-purple-50 to-blue-300">
+          <MainHeader background="bg-transparent" />
+        </div>
+
+        <main className="px-6 md:px-12 lg:px-26 -mt-20 flex flex-col gap-16">
           <Outlet />
         </main>
-      </section>
+      </div>
     </div>
   );
 };

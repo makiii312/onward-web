@@ -1,5 +1,3 @@
-import './Dashboard.css';
-
 const SchedulePage = () => {
   return (
     <>
