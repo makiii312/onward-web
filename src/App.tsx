@@ -10,6 +10,7 @@ import DashboardPage from './pages/Dashboard/index.tsx';
 import JobApplicationsPage from './pages/Dashboard/JobApplications.tsx';
 import LearningPlansPage from './pages/Dashboard/LearningPlans.tsx';
 import SchedulePage from './pages/Dashboard/Schedule.tsx';
+import { SidebarProvider } from './context/sidebar/SidebarProvider.tsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => <RouterProvider router={router} />;
+const App = () => {
+  return (
+    <SidebarProvider>
+      <RouterProvider router={router} />
+    </SidebarProvider>
+  );
+};
 
 export default App;

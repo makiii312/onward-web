@@ -1,13 +1,22 @@
 import { Outlet } from 'react-router';
-import MainHeader from '../../components/navigation/MainHeader';
-import SideNavigation from '../../components/navigation/SideNavigation';
+import clsx from 'clsx';
+import MainHeader from '@/components/navigation/MainHeader';
+import SideNavigation from '@/components/navigation/SideNavigation';
+import { useSidebar } from '@/context/sidebar/useSidebar';
 
-const DashboardLayout = () => {
+const MainDashboardLayout = () => {
+  const { collapsed } = useSidebar();
+
   return (
     <div className="min-h-screen">
       <SideNavigation />
 
-      <div className="ml-[15%]">
+      <div
+        className={clsx(
+          'transition-all duration-300',
+          collapsed ? 'ml-20' : 'ml-60',
+        )}
+      >
         <div className="h-58.75 bg-linear-to-t from-purple-50 to-blue-300">
           <MainHeader background="bg-transparent" />
         </div>
@@ -20,4 +29,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default MainDashboardLayout;
