@@ -39,6 +39,8 @@ const SideNavigation = () => {
 
         {/* Toggle Button */}
         <button
+          aria-label="Collapse sidebar"
+          type="button"
           onClick={() => setCollapsed(!collapsed)}
           className="absolute -right-4 top-10 -translate-y-1/2 
           bg-lavender-200 shadow rounded-full w-8 h-8 flex items-center justify-center"

@@ -9,8 +9,8 @@ export const SidebarProvider = ({ children }: SidebarProviderProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <SidebarContext value={{ collapsed, setCollapsed }}>
+    <SidebarContext.Provider value={{ collapsed, setCollapsed }}>
       {children}
-    </SidebarContext>
+    </SidebarContext.Provider>
   );
 };
