@@ -13,9 +13,9 @@ type InterviewData = {
 };
 
 const DashboardPage = () => {
-  const [totalApplications, setTotalApplications] = useState(0);
-  const [totalActiveApplications, setTotalActiveApplications] = useState(0);
-  const [upcomingInterviews, setUpcomingInterviews] = useState([]);
+  const [totalApplications] = useState(0);
+  const [totalActiveApplications] = useState(0);
+  const [upcomingInterviews] = useState([]);
 
   return (
     <>
@@ -68,13 +68,16 @@ const DashboardPage = () => {
             {upcomingInterviews.length === 0 ? (
               <p className="text-center text-grey-500">No data available</p>
             ) : (
-              upcomingInterviews.map((interviewData: InterviewData) => (
-                <InterviewItem
-                  title={interviewData.title}
-                  date={interviewData.date}
-                  time={interviewData.time}
-                />
-              ))
+              upcomingInterviews.map(
+                (interviewData: InterviewData, index: number) => (
+                  <InterviewItem
+                    key={index}
+                    title={interviewData.title}
+                    date={interviewData.date}
+                    time={interviewData.time}
+                  />
+                ),
+              )
             )}
           </div>
         </section>
