@@ -6,6 +6,15 @@ import {
   CalendarIcon,
   ChevronLeftIcon,
 } from '../Icons.tsx';
+import {
+  RiArrowLeftSLine,
+  RiArrowDropLeftLine,
+  RiArrowLeftWideLine,
+  RiLayoutGridFill,
+  RiClipboardFill,
+  RiGraduationCapFill,
+  RiCalendarEventFill,
+} from '@remixicon/react';
 import NavItem from './NavItem.tsx';
 import { useSidebar } from '@/context/sidebar/useSidebar.tsx';
 
@@ -51,7 +60,7 @@ const SideNavigation = () => {
               collapsed ? 'rotate-180' : '',
             )}
           >
-            <ChevronLeftIcon />
+            <RiArrowLeftSLine size={16} className="stroke-5" />
           </span>
         </button>
       </div>
@@ -61,25 +70,25 @@ const SideNavigation = () => {
         <ul>
           <NavItem
             to="/"
-            icon={DashboardIcon}
+            icon={RiLayoutGridFill}
             label="Dashboard"
             collapsed={collapsed}
           />
           <NavItem
             to="/job-applications"
-            icon={ClipboardListIcon}
+            icon={RiClipboardFill}
             label="Job Applications"
             collapsed={collapsed}
           />
           <NavItem
             to="/learning-plans"
-            icon={AcademicCapIcon}
+            icon={RiGraduationCapFill}
             label="Learning Plans"
             collapsed={collapsed}
           />
           <NavItem
             to="/schedule"
-            icon={CalendarIcon}
+            icon={RiCalendarEventFill}
             label="Schedule"
             collapsed={collapsed}
           />
