@@ -16,9 +16,9 @@ const WIDTH_MAPPER = {
 
 const VARIANT_MAPPER = {
   primary: 'bg-purple-100 text-white hover:bg-purple-50',
-  secondary: 'bg-grey-100 text-grey-700 hover:bg-lavender-200',
+  secondary: 'bg-gray-100 text-gray-700 hover:bg-lavender-200',
   outline:
-    'border border-grey-100 text-grey-700 hover:border-purple-100 hover:text-purple-100',
+    'border border-gray-100 text-gray-700 hover:border-purple-100 hover:text-purple-100',
   danger: 'bg-red-500 text-white hover:bg-red-100',
 };
 

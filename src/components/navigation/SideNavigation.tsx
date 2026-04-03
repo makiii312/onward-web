@@ -1,20 +1,11 @@
 import clsx from 'clsx';
 import {
-  DashboardIcon,
-  ClipboardListIcon,
-  AcademicCapIcon,
-  CalendarIcon,
-  ChevronLeftIcon,
-} from '../Icons.tsx';
-import {
-  RiArrowLeftSLine,
-  RiArrowDropLeftLine,
-  RiArrowLeftWideLine,
-  RiLayoutGridFill,
-  RiClipboardFill,
-  RiGraduationCapFill,
-  RiCalendarEventFill,
-} from '@remixicon/react';
+  ChevronLeft,
+  LayoutDashboard,
+  ClipboardList,
+  GraduationCap,
+  Calendar,
+} from 'lucide-react';
 import NavItem from './NavItem.tsx';
 import { useSidebar } from '@/context/sidebar/useSidebar.tsx';
 
@@ -31,7 +22,7 @@ const SideNavigation = () => {
         },
       )}
     >
-      <div className="flex items-center p-5 border-b border-grey-50">
+      <div className="flex items-center p-5 border-b border-gray-50">
         {/* Main Logo */}
         <img
           src={
@@ -60,35 +51,35 @@ const SideNavigation = () => {
               collapsed ? 'rotate-180' : '',
             )}
           >
-            <RiArrowLeftSLine size={16} className="stroke-5" />
+            <ChevronLeft size={16} />
           </span>
         </button>
       </div>
 
-      <nav className="text-grey-500">
+      <nav className="text-gray-500">
         {/* Side Nav Links */}
         <ul>
           <NavItem
             to="/"
-            icon={RiLayoutGridFill}
+            icon={LayoutDashboard}
             label="Dashboard"
             collapsed={collapsed}
           />
           <NavItem
             to="/job-applications"
-            icon={RiClipboardFill}
+            icon={ClipboardList}
             label="Job Applications"
             collapsed={collapsed}
           />
           <NavItem
             to="/learning-plans"
-            icon={RiGraduationCapFill}
+            icon={GraduationCap}
             label="Learning Plans"
             collapsed={collapsed}
           />
           <NavItem
             to="/schedule"
-            icon={RiCalendarEventFill}
+            icon={Calendar}
             label="Schedule"
             collapsed={collapsed}
           />

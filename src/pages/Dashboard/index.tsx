@@ -60,13 +60,13 @@ const DashboardPage = () => {
         <section className="w-full md:w-1/4 flex flex-col gap-y-2">
           <div className="flex justify-between text-sm">
             <h3 className="font-semibold">Upcoming Interviews</h3>
-            <Link className="text-grey-500" to="/schedule">
+            <Link className="text-gray-500" to="/schedule">
               View All
             </Link>
           </div>
-          <div className="flex flex-col min-h-16 border border-dashed border-grey-500 rounded-lg items-center justify-center p-4 gap-y-4">
+          <div className="flex flex-col min-h-16 border border-dashed border-gray-500 rounded-lg items-center justify-center p-4 gap-y-4">
             {upcomingInterviews.length === 0 ? (
-              <p className="text-center text-grey-500">No data available</p>
+              <p className="text-center text-gray-500">No data available</p>
             ) : (
               upcomingInterviews.map(
                 (interviewData: InterviewData, index: number) => (

@@ -17,11 +17,11 @@ const StatsCard = ({
 
   return (
     <div className="flex flex-col w-auto max-w-md rounded-2xl bg-white px-8 py-6 shadow gap-y-2">
-      <p className="text-left text-xs font-bold text-grey-700">{title}</p>
+      <p className="text-left text-xs font-bold text-gray-700">{title}</p>
       <p className="text-left text-5xl font-bold text-purple-700">
         {value || defaultValue}
       </p>
-      <p className="text-left text-xs font-normal text-grey-700">
+      <p className="text-left text-xs font-normal text-gray-700">
         <span className={statPercentageDiffClass}>
           {statPercentageDiffValue}
         </span>{' '}

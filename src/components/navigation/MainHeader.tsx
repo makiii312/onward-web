@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { BellIcon, UserCircleIcon } from '../Icons.tsx';
+import { Bell, CircleUserRound } from 'lucide-react';
 
 type MainHeaderProps = {
   background?: string;
@@ -14,10 +14,10 @@ const MainHeader = ({ background = 'bg-purple-50' }: MainHeaderProps) => {
       )}
     >
       <div>
-        <BellIcon />
+        <Bell />
       </div>
       <div className="flex gap-2">
-        <UserCircleIcon />
+        <CircleUserRound />
         <span>Hi, Micah</span>
       </div>
     </header>
