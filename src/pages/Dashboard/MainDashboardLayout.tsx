@@ -21,7 +21,7 @@ const MainDashboardLayout = () => {
           <MainHeader background="bg-transparent" />
         </div>
 
-        <main className="px-6 md:px-12 lg:px-26 -mt-20 flex flex-col gap-16">
+        <main className="-mt-20 flex flex-col gap-16 px-6 md:px-12 lg:px-26">
           <Outlet />
         </main>
       </div>

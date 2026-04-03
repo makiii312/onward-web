@@ -9,7 +9,7 @@ const MainHeader = ({ background = 'bg-purple-50' }: MainHeaderProps) => {
   return (
     <header
       className={clsx(
-        'h-12.5 flex text-lavender-200 items-center justify-end p-5 gap-5 z-0',
+        'z-0 flex h-12.5 items-center justify-end gap-5 p-5 text-lavender-200',
         background,
       )}
     >

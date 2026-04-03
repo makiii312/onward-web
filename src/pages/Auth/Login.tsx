@@ -43,7 +43,7 @@ const LoginPage = () => {
             label="Password"
           />
         </FieldGroup>
-        <div className="flex flex-col gap-y-4 mt-8">
+        <div className="mt-8 flex flex-col gap-y-4">
           <Button type="submit" size="lg">
             Login
           </Button>

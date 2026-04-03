@@ -19,7 +19,7 @@ const NavItem = ({
       <Link
         to={to}
         className={clsx(
-          'flex items-center gap-3 p-5 hover:text-purple-900 transition-all duration-300',
+          'flex items-center gap-3 p-5 transition-all duration-300 hover:text-purple-900',
           {
             'justify-center': collapsed,
           },
@@ -29,8 +29,8 @@ const NavItem = ({
 
         <span
           className={clsx('whitespace-nowrap transition-all duration-300', {
-            'opacity-0 w-0 overflow-hidden': collapsed,
-            'opacity-100 w-auto': !collapsed,
+            'w-0 overflow-hidden opacity-0': collapsed,
+            'w-auto opacity-100': !collapsed,
           })}
         >
           {label}
