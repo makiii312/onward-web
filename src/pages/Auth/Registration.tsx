@@ -7,9 +7,9 @@ import {
 } from '@/schemas/auth.schema';
 import { Button } from '@/components/ui/button';
 
-import AuthCard from '../../components/card/AuthCard';
-import TextInput from '../../components/form/TextInput';
-import PasswordInput from '../../components/form/PasswordInput';
+import AuthCard from '@/components/card/AuthCard';
+import TextInput from '@/components/form/TextInput';
+import PasswordInput from '@/components/form/PasswordInput';
 
 const RegistrationPage = () => {
   const form = useForm<RegistrationFormValues>({

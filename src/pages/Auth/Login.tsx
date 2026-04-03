@@ -5,9 +5,9 @@ import { loginSchema, type LoginFormValues } from '@/schemas/auth.schema';
 import { FieldGroup } from '@/components/ui/field';
 import { Button } from '@/components/ui/button';
 
-import AuthCard from '../../components/card/AuthCard';
-import TextInput from '../../components/form/TextInput';
-import PasswordInput from '../../components/form/PasswordInput';
+import AuthCard from '@/components/card/AuthCard';
+import TextInput from '@/components/form/TextInput';
+import PasswordInput from '@/components/form/PasswordInput';
 
 const LoginPage = () => {
   const form = useForm<LoginFormValues>({

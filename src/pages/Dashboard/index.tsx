@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import Badge from '../../components/Badge';
-import DashboardSection from '../../components/DashboardSection';
-import EmptyState from '../../components/EmptyState';
-import InterviewItem from '../../components/InterviewItem';
-import StatsCard from '../../components/card/StatsCard';
+import { Badge } from '@/components/ui/badge';
+
+import DashboardSection from '@/components/DashboardSection';
+import EmptyState from '@/components/EmptyState';
+import InterviewItem from '@/components/InterviewItem';
+import StatsCard from '@/components/card/StatsCard';
 
 type InterviewData = {
   title: string;
@@ -38,12 +39,14 @@ const DashboardPage = () => {
 
       <div className="relative flex flex-col-reverse gap-10 md:flex-row">
         <div className="flex w-full flex-col gap-y-16 md:w-3/4">
-          {/* Active Job APplications */}
+          {/* Active Job Applications */}
           <DashboardSection
             title="Active Job Applications"
             titleExtra={
               totalActiveApplications > 0 && (
-                <Badge variant="primary">{totalActiveApplications}</Badge>
+                <Badge className="bg-lavender-200 text-purple-700">
+                  {totalActiveApplications}
+                </Badge>
               )
             }
           >
