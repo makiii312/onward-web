@@ -5,9 +5,9 @@ type InterviewItemProps = {
 };
 
 const InterviewItem = ({ title, date, time }: InterviewItemProps) => (
-  <div className="w-full bg-white px-4 py-2 rounded-lg">
-    <p className="text-purple-700 font-semibold">{title}</p>
-    <p className="text-grey-700">{`${date} - ${time}`}</p>
+  <div className="w-full rounded-lg bg-white px-4 py-2">
+    <p className="font-semibold text-purple-700">{title}</p>
+    <p className="text-gray-700">{`${date} - ${time}`}</p>
   </div>
 );
 

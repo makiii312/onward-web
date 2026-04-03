@@ -1,24 +1,52 @@
-type TextInputProps = {
+import {
+  type Control,
+  type FieldValues,
+  type Path,
+  Controller,
+} from 'react-hook-form';
+import { Field, FieldError, FieldLabel } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+
+type TextInputProps<T extends FieldValues> = {
+  control: Control<T>;
+  name: Path<T>;
   label: string;
+  type?: 'text' | 'email';
   required?: boolean;
 };
 
-const TextInput = ({ label, required = false }: TextInputProps) => {
-  const placeholderMessage = `Enter ${label.toLowerCase()}`;
+const TextInput = <T extends FieldValues>({
+  control,
+  name,
+  label,
+  type = 'text',
+  required = false,
+}: TextInputProps<T>) => {
+  const fieldName = label.toLowerCase();
+  const placeholderMessage = `Enter ${fieldName}`;
 
   return (
-    <div className="w-full">
-      <label className="w-full text-xs font-semibold text-gray-800">
-        {label}
-        {required && <span>*</span>}
-      </label>
-
-      <input
-        type="text"
-        placeholder={placeholderMessage}
-        className="w-full bg-grey-25 border-2 border-gray-100 rounded-md px-2 py-1"
-      />
-    </div>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <Field data-invalid={fieldState.invalid}>
+          <FieldLabel htmlFor={name}>
+            {label}
+            {required && <span className="text-destructive">*</span>}
+          </FieldLabel>
+          <Input
+            {...field}
+            id={name}
+            type={type}
+            aria-invalid={fieldState.invalid}
+            placeholder={placeholderMessage}
+            required={required}
+          />
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+        </Field>
+      )}
+    ></Controller>
   );
 };
 

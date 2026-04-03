@@ -1,4 +1,4 @@
-import Card from './card/Card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 type DashboardSectionProps = {
   title: string;
@@ -12,8 +12,13 @@ const DashboardSection = ({
   children,
 }: DashboardSectionProps) => (
   <section>
-    <Card title={title} titleExtra={titleExtra}>
-      {children}
+    <Card>
+      <CardHeader>
+        <CardTitle>
+          {title} {titleExtra && <>{titleExtra}</>}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>{children}</CardContent>
     </Card>
   </section>
 );

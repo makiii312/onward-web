@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import {
-  DashboardIcon,
-  ClipboardListIcon,
-  AcademicCapIcon,
-  CalendarIcon,
-  ChevronLeftIcon,
-} from '../Icons.tsx';
+  ChevronLeft,
+  LayoutDashboard,
+  ClipboardList,
+  GraduationCap,
+  Calendar,
+} from 'lucide-react';
 import NavItem from './NavItem.tsx';
 import { useSidebar } from '@/context/sidebar/useSidebar.tsx';
 
@@ -15,14 +15,14 @@ const SideNavigation = () => {
   return (
     <aside
       className={clsx(
-        'fixed min-h-full bg-white transition-all duration-300 z-10',
+        'fixed z-10 min-h-full bg-white transition-all duration-300',
         {
           'w-20': collapsed,
           'w-60': !collapsed,
         },
       )}
     >
-      <div className="flex items-center p-5 border-b border-grey-50">
+      <div className="flex items-center border-b border-gray-50 p-5">
         {/* Main Logo */}
         <img
           src={
@@ -33,7 +33,7 @@ const SideNavigation = () => {
           alt="Onward"
           className={clsx(
             'transition-all duration-300',
-            collapsed ? 'w-9 mx-auto' : 'w-37.5',
+            collapsed ? 'mx-auto w-9' : 'w-37.5',
           )}
         />
 
@@ -42,8 +42,7 @@ const SideNavigation = () => {
           aria-label="Collapse sidebar"
           type="button"
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-4 top-10 -translate-y-1/2 
-          bg-lavender-200 shadow rounded-full w-8 h-8 flex items-center justify-center"
+          className="absolute top-10 -right-4 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-lavender-200 shadow"
         >
           <span
             className={clsx(
@@ -51,35 +50,35 @@ const SideNavigation = () => {
               collapsed ? 'rotate-180' : '',
             )}
           >
-            <ChevronLeftIcon />
+            <ChevronLeft size={16} />
           </span>
         </button>
       </div>
 
-      <nav className="text-grey-500">
+      <nav className="text-gray-500">
         {/* Side Nav Links */}
         <ul>
           <NavItem
             to="/"
-            icon={DashboardIcon}
+            icon={LayoutDashboard}
             label="Dashboard"
             collapsed={collapsed}
           />
           <NavItem
             to="/job-applications"
-            icon={ClipboardListIcon}
+            icon={ClipboardList}
             label="Job Applications"
             collapsed={collapsed}
           />
           <NavItem
             to="/learning-plans"
-            icon={AcademicCapIcon}
+            icon={GraduationCap}
             label="Learning Plans"
             collapsed={collapsed}
           />
           <NavItem
             to="/schedule"
-            icon={CalendarIcon}
+            icon={Calendar}
             label="Schedule"
             collapsed={collapsed}
           />

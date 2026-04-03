@@ -9,7 +9,7 @@ type BadgeProps = {
 };
 
 const VARIANT_STYLES = {
-  default: 'bg-grey-100 text-grey-700',
+  default: 'bg-gray-100 text-gray-700',
   primary: 'bg-lavender-200 text-purple-700',
   success: 'bg-green-50 text-green-700',
   warning: 'bg-orange-50 text-orange-700',

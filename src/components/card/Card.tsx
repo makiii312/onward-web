@@ -24,10 +24,10 @@ const Card = ({
       : width;
 
   return (
-    <div className={`${baseStyle}  ${widthStyle}`}>
+    <div className={`${baseStyle} ${widthStyle}`}>
       {title && (
         <div className="flex items-center gap-x-2">
-          <h1 className="text-left text-sm font-bold text-grey-700">{title}</h1>
+          <h1 className="text-left text-sm font-bold text-gray-700">{title}</h1>
           {titleExtra && <>{titleExtra}</>}
         </div>
       )}

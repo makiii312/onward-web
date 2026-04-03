@@ -3,8 +3,8 @@ type EmptyStateProps = {
 };
 
 const EmptyState = ({ message }: EmptyStateProps) => (
-  <div className="w-full min-h-40 flex items-center justify-center">
-    <p className="text-grey-500 font-bold">{message}</p>
+  <div className="flex min-h-40 w-full items-center justify-center">
+    <p className="font-bold text-gray-500">{message}</p>
   </div>
 );
 
