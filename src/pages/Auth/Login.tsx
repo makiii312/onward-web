@@ -18,16 +18,9 @@ const LoginPage = () => {
     },
   });
 
-  const onSubmit = (data: LoginFormValues) => {
-    console.log('Login:', data);
-  };
-
   return (
     <AuthCard title="User Login">
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-y-4"
-      >
+      <form className="flex flex-col gap-y-4">
         <FieldGroup>
           {/* Email */}
           <TextInput

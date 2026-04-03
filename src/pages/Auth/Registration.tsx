@@ -23,16 +23,9 @@ const RegistrationPage = () => {
     },
   });
 
-  const onSubmit = (data: RegistrationFormValues) => {
-    console.log('Register:', data);
-  };
-
   return (
     <AuthCard title="Registration">
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-y-4"
-      >
+      <form className="flex flex-col gap-y-4">
         <TextInput control={form.control} name="firstName" label="First name" />
         <TextInput control={form.control} name="lastName" label="Last name" />
         <TextInput
