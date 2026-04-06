@@ -4,6 +4,7 @@ import axios, {
   AxiosError,
 } from 'axios';
 import { parseAxiosError } from './errors';
+import { useAuth } from '@/hooks/useAuth';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 const API_TIMEOUT = 10000;
@@ -44,9 +45,8 @@ api.interceptors.response.use(
 
     if (apiError.isUnauthorized() && apiError.message === 'Expired token') {
       console.error('Token expired, redirecting to login...', apiError.message);
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('userId');
-      window.location.href = '/auth/login';
+      const { logout } = useAuth();
+      logout();
     }
 
     if (apiError.isForbidden()) {
