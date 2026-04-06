@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { Bell, CircleUserRound } from 'lucide-react';
+import { Bell } from 'lucide-react';
+import DropdownMenuAvatar from './DropdownMenuAvatar';
 
 type MainHeaderProps = {
   background?: string;
@@ -17,8 +18,7 @@ const MainHeader = ({ background = 'bg-purple-50' }: MainHeaderProps) => {
         <Bell />
       </div>
       <div className="flex gap-2">
-        <CircleUserRound />
-        <span>Hi, Micah</span>
+        <DropdownMenuAvatar></DropdownMenuAvatar>
       </div>
     </header>
   );
