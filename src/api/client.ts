@@ -4,7 +4,8 @@ import axios, {
   AxiosError,
 } from 'axios';
 import { parseAxiosError } from './errors';
-import { useAuth } from '@/hooks/useAuth';
+import { authService } from '@/services/auth.service';
+import { TOKEN_KEY } from '@/constants/auth.constants';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 const API_TIMEOUT = 10000;
@@ -21,7 +22,7 @@ export const api: AxiosInstance = axios.create({
 // Request Interceptor
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem(TOKEN_KEY);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -45,8 +46,8 @@ api.interceptors.response.use(
 
     if (apiError.isUnauthorized() && apiError.message === 'Expired token') {
       console.error('Token expired, redirecting to login...', apiError.message);
-      const { logout } = useAuth();
-      logout();
+      authService.clearSessionData();
+      window.location.assign('/auth/login');
     }
 
     if (apiError.isForbidden()) {

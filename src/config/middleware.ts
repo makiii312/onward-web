@@ -5,7 +5,7 @@ export const authMiddleware: MiddlewareFunction = async ({
   request,
 }): Promise<Response | null> => {
   const isAuthenticated = authService.isAuthenticated();
-  const isPublicPath = request.url.includes('/auth');
+  const isPublicPath = new URL(request.url).pathname.startsWith('/auth');
 
   if (!isPublicPath && !isAuthenticated) {
     return new Response(null, {
@@ -23,7 +23,7 @@ export const publicRouteMiddleware: MiddlewareFunction = async ({
   request,
 }): Promise<Response | null> => {
   const isAuthenticated = authService.isAuthenticated();
-  const isPublicPath = request.url.includes('/auth');
+  const isPublicPath = new URL(request.url).pathname.startsWith('/auth');
 
   if (isPublicPath && isAuthenticated) {
     return new Response(null, {
