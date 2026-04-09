@@ -6,6 +6,7 @@ import DashboardSection from '@/components/DashboardSection';
 import EmptyState from '@/components/EmptyState';
 import InterviewItem from '@/components/InterviewItem';
 import StatsCard from '@/components/card/StatsCard';
+import JobApplicationStatsOverview from '@/components/JobApplicationStatsOverview';
 
 type InterviewData = {
   title: string;
@@ -15,27 +16,19 @@ type InterviewData = {
 
 const DashboardPage = () => {
   const [totalApplications] = useState(0);
+  const [totalInterviews] = useState(0);
   const [totalActiveApplications] = useState(0);
   const [upcomingInterviews] = useState([]);
 
   return (
     <>
       {/* Overall Job Application Stats */}
-      <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <StatsCard
-          title="Total Applications Submitted"
-          value={totalApplications}
-          percentage=""
-        />
-        <StatsCard title="Number of Interviews" value="" percentage="" />
-        <StatsCard
-          title="Interview Rate"
-          value=""
-          percentage=""
-          defaultValue="-"
-        />
-        <StatsCard title="Offer Rate" value="" percentage="" defaultValue="-" />
-      </section>
+      <JobApplicationStatsOverview
+        totalApplications={totalApplications}
+        totalInterviews={totalInterviews}
+        interviewRate=""
+        offerRate=""
+      />
 
       <div className="relative flex flex-col-reverse gap-10 md:flex-row">
         <div className="flex w-full flex-col gap-y-16 md:w-3/4">
