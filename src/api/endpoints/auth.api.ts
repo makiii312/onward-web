@@ -1,5 +1,5 @@
 import { api } from '@/api/client';
-import type { UserCredentials } from '@/types/auth.types';
+import type { UserCredentials } from '@/shared/types/auth.types';
 
 /**
  * User account login via email & password credentials
