@@ -1,5 +1,5 @@
 import { api } from '@/api/client';
-import type { UserRegistrationData } from '@/types/user.type';
+import type { UserRegistrationData } from '@/features/auth/types/user.type';
 
 /**
  * Creation of new user account

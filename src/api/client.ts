@@ -4,8 +4,8 @@ import axios, {
   AxiosError,
 } from 'axios';
 import { parseAxiosError } from './errors';
-import { authService } from '@/services/auth.service';
-import { TOKEN_KEY } from '@/constants/auth.constants';
+import { authService } from '@/features/auth/services/auth.service';
+import { TOKEN_KEY } from '@/features/auth/constants/auth.constants';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 const API_TIMEOUT = 10000;
