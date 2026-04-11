@@ -24,18 +24,19 @@ const SideNavigation = () => {
     >
       <div className="flex items-center border-b border-gray-50 p-5">
         {/* Main Logo */}
-        <img
-          src={
-            collapsed
-              ? '/src/assets/onward-logo.svg'
-              : '/src/assets/onward-logo-text.svg'
-          }
-          alt="Onward"
-          className={clsx(
-            'transition-all duration-300',
-            collapsed ? 'mx-auto w-9' : 'w-37.5',
+        <div className="flex items-center gap-4 text-3xl font-bold text-purple-500">
+          <img
+            src="/src/assets/onward-logo.svg"
+            alt="Onward"
+            className={clsx(
+              'w-9 transition-all duration-300',
+              collapsed ? 'mx-auto' : '',
+            )}
+          />
+          {!collapsed && (
+            <span className="transition-all duration-300">onward</span>
           )}
-        />
+        </div>
 
         {/* Toggle Button */}
         <button

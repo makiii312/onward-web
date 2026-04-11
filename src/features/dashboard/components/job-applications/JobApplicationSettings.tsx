@@ -21,7 +21,7 @@ const JobApplicationSettings = () => {
       <h2 className="text-base font-bold text-gray-700">
         Manage Application Stages
       </h2>
-      <Card className="w-3/5">
+      <Card className="w-full lg:w-3/5">
         <Table>
           <TableHeader>
             <TableRow>

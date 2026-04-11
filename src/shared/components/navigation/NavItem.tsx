@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 type NavItemProps = {
   to: string;
@@ -16,26 +17,45 @@ const NavItem = ({
 }: NavItemProps) => {
   return (
     <li>
-      <Link
-        to={to}
-        className={clsx(
-          'flex items-center gap-3 p-5 transition-all duration-300 hover:text-purple-900',
-          {
-            'justify-center': collapsed,
-          },
-        )}
-      >
-        <Icon />
+      <Tooltip>
+        <TooltipTrigger className="w-full transition-all duration-300">
+          <NavLink
+            to={to}
+            className={({ isActive }) => {
+              return clsx(
+                'flex w-full items-center place-self-center p-5 transition-all duration-300 hover:text-purple-900',
+                {
+                  'gap-3': !collapsed,
+                  'justify-center': collapsed,
+                  'text-purple-900': isActive,
+                },
+              );
+            }}
+          >
+            <Icon />
 
-        <span
-          className={clsx('whitespace-nowrap transition-all duration-300', {
-            'w-0 overflow-hidden opacity-0': collapsed,
-            'w-auto opacity-100': !collapsed,
-          })}
-        >
-          {label}
-        </span>
-      </Link>
+            <span
+              className={clsx('whitespace-nowrap transition-all duration-300', {
+                'w-0 overflow-hidden opacity-0': collapsed,
+                'w-auto opacity-100': !collapsed,
+              })}
+            >
+              {label}
+            </span>
+          </NavLink>
+
+          <TooltipContent
+            className={clsx('', {
+              'w-auto overflow-hidden opacity-100': collapsed,
+              'w-0 opacity-0': !collapsed,
+            })}
+            side="right"
+            sideOffset={-20}
+          >
+            {label}
+          </TooltipContent>
+        </TooltipTrigger>
+      </Tooltip>
     </li>
   );
 };
