@@ -1,4 +1,4 @@
-import JobApplicationStatsOverview from '../components/job-applications/JobApplicationStatsOverview';
+import { useState } from 'react';
 import { Separator } from '@/shared/components/ui/separator';
 import {
   Tabs,
@@ -6,7 +6,11 @@ import {
   TabsList,
   TabsTrigger,
 } from '@/shared/components/ui/tabs';
-import { useState } from 'react';
+
+import JobApplicationStatsOverview from '../components/job-applications/JobApplicationStatsOverview';
+import JobApplicationListView from '../components/job-applications/JobApplicationListView';
+import JobApplicationBoardView from '../components/job-applications/JobApplicationBoardView';
+import JobApplicationSettings from '../components/job-applications/JobApplicationSettings';
 
 const JobApplicationsPage = () => {
   const [totalApplications] = useState(0);
@@ -31,14 +35,26 @@ const JobApplicationsPage = () => {
           </TabsList>
           <Separator />
 
-          <div className="flex flex-col gap-8 p-10">
-            <TabsContent value="overview">
+          <div className="flex flex-col gap-8 pt-6">
+            <TabsContent value="overview" className="px-8">
               <JobApplicationStatsOverview
                 totalApplications={totalApplications}
                 totalInterviews={totalInterviews}
                 interviewRate=""
                 offerRate=""
               />
+            </TabsContent>
+
+            <TabsContent value="list">
+              <JobApplicationListView />
+            </TabsContent>
+
+            <TabsContent value="board">
+              <JobApplicationBoardView />
+            </TabsContent>
+
+            <TabsContent value="settings">
+              <JobApplicationSettings />
             </TabsContent>
           </div>
         </Tabs>
