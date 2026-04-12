@@ -40,7 +40,7 @@ const JobApplicationListView = () => {
       <TableBody>
         {/* Collapsible Job Application Status List */}
         {visibleStages.map((status) => (
-          <Collapsible key={status.label} asChild>
+          <Collapsible key={status.value} asChild>
             <ApplicationStageRow status={status} />
           </Collapsible>
         ))}

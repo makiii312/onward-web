@@ -18,7 +18,7 @@ const NavItem = ({
   return (
     <li>
       <Tooltip>
-        <TooltipTrigger className="w-full transition-all duration-300">
+        <TooltipTrigger className="w-full transition-all duration-300" asChil>
           <NavLink
             to={to}
             className={({ isActive }) => {
@@ -43,18 +43,17 @@ const NavItem = ({
               {label}
             </span>
           </NavLink>
-
-          <TooltipContent
-            className={clsx('', {
-              'w-auto overflow-hidden opacity-100': collapsed,
-              'w-0 opacity-0': !collapsed,
-            })}
-            side="right"
-            sideOffset={-20}
-          >
-            {label}
-          </TooltipContent>
         </TooltipTrigger>
+        <TooltipContent
+          className={clsx('', {
+            'w-auto overflow-hidden opacity-100': collapsed,
+            'w-0 opacity-0': !collapsed,
+          })}
+          side="right"
+          sideOffset={-20}
+        >
+          {label}
+        </TooltipContent>
       </Tooltip>
     </li>
   );

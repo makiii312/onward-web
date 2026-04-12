@@ -1,12 +1,11 @@
+import { Calendar, ChevronRightIcon, Globe, Plus } from 'lucide-react';
 import {
-  Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/shared/components/ui/collapsible';
 import { TableCell, TableRow } from '@/shared/components/ui/table';
-import { JOB_APPLICATION_LIST_COLUMNS } from '../../constants/application.constants';
 import { Button } from '@/shared/components/ui/button';
-import { Calendar, ChevronRightIcon, Globe, Plus } from 'lucide-react';
+import { JOB_APPLICATION_LIST_COLUMNS } from '../../constants/application.constants';
 
 type StageRowProps = {
   status: { label: string };
