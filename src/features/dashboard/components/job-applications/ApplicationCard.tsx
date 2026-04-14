@@ -1,4 +1,4 @@
-import { useDraggable } from '@dnd-kit/react';
+import { useSortable } from '@dnd-kit/react/sortable';
 import { Calendar, Globe } from 'lucide-react';
 import type { ApplicationItem } from '../../types/application.types';
 
@@ -6,10 +6,14 @@ type ApplicationCardProps = {
   application: ApplicationItem;
 };
 
-export const ApplicationCard = ({
-  application = {} as ApplicationItem,
-}: ApplicationCardProps) => {
-  const { ref } = useDraggable({ id: application?.id });
+export const ApplicationCard = ({ application }: ApplicationCardProps) => {
+  const { ref } = useSortable({
+    id: application.id,
+    index: application.order_index,
+    group: application.status,
+    type: 'application',
+    accept: ['application'],
+  });
 
   return (
     <div
@@ -18,15 +22,15 @@ export const ApplicationCard = ({
     >
       <div className="flex flex-col gap-y-1">
         <p className="text-base font-semibold text-black">
-          {application?.job_title}
+          {application.job_title}
         </p>
-        <p className="text-sm text-gray-700">{application?.company_name}</p>
+        <p className="text-sm text-gray-700">{application.company_name}</p>
       </div>
 
       <div className="flex flex-col gap-y-2">
         <p className="flex gap-x-2 text-xs text-gray-500">
           <Globe size={16} />
-          {application?.job_platform}
+          {application.job_platform}
         </p>
         {application?.date_applied && (
           <p className="flex gap-x-2 text-xs text-gray-500">

@@ -1,4 +1,5 @@
 import { useDroppable } from '@dnd-kit/react';
+import { CollisionPriority } from '@dnd-kit/abstract';
 import { Plus } from 'lucide-react';
 import { Button } from '@/shared/components/ui/button';
 import type {
@@ -18,7 +19,12 @@ export const ApplicationStageColumn = ({
   stage,
   applications = [],
 }: StageColumnProps) => {
-  const { ref } = useDroppable({ id });
+  const { ref } = useDroppable({
+    id,
+    type: 'stage',
+    accept: ['application'],
+    collisionPriority: CollisionPriority.Low,
+  });
   return (
     <div ref={ref} className="flex min-w-60 flex-col gap-y-6">
       {/* Column Header */}

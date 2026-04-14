@@ -36,4 +36,5 @@ export type ApplicationItem = {
   job_platform: string;
   date_applied: string | null;
   status: string;
+  order_index: number;
 };
