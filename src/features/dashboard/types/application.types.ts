@@ -28,3 +28,12 @@ export type EmploymentType = (typeof EMPLOYMENT_TYPES)[number];
 export type WorkShift = (typeof WORK_SHIFTS)[number];
 
 export type WorkSetup = (typeof WORK_SETUPS)[number];
+
+export type ApplicationItem = {
+  id: string;
+  job_title: string;
+  company_name: string;
+  job_platform: string;
+  date_applied: string | null;
+  status: string;
+};
