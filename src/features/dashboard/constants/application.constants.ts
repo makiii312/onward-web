@@ -34,14 +34,24 @@ export const MANAGE_APPLICATION_STAGE_COLUMNS = [
 ];
 
 export const APPLICATION_STAGES: ApplicationStage[] = [
-  { value: 'saved', label: 'Reviewing', category: 'Saved' },
-  { value: 'applied', label: 'Applied', category: 'Applied' },
-  { value: 'interview', label: 'Interview', category: 'Interview' },
-  { value: 'withdrawn', label: 'Withdrawn', category: 'Closed' },
-  { value: 'rejected', label: 'Rejected', category: 'Closed' },
-  { value: 'offer', label: 'Offer', category: 'Offer' },
-  { value: 'declined', label: 'Declined', category: 'Closed' },
-  { value: 'accepted', label: 'Accepted', category: 'Hired' },
+  { value: 'saved', label: 'Reviewing', category: 'Saved', order_index: 0 },
+  { value: 'applied', label: 'Applied', category: 'Applied', order_index: 1 },
+  {
+    value: 'interview',
+    label: 'Interview',
+    category: 'Interview',
+    order_index: 2,
+  },
+  {
+    value: 'withdrawn',
+    label: 'Withdrawn',
+    category: 'Closed',
+    order_index: 3,
+  },
+  { value: 'rejected', label: 'Rejected', category: 'Closed', order_index: 4 },
+  { value: 'offer', label: 'Offer', category: 'Offer', order_index: 5 },
+  { value: 'declined', label: 'Declined', category: 'Closed', order_index: 6 },
+  { value: 'accepted', label: 'Accepted', category: 'Hired', order_index: 7 },
 ];
 
 export const HIDDEN_STAGE_CATEGORIES = new Set<StageCategory>([

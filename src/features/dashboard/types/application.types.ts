@@ -15,9 +15,11 @@ export type StageCategory =
   | 'Closed';
 
 export type ApplicationStage = {
+  id?: string;
   value: string; // dynamic value based on customization
   label: string;
   category: StageCategory;
+  order_index: number;
 };
 
 export type StageCategoryColor =

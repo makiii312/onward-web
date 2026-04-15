@@ -1,3 +1,9 @@
+import {
+  DragDropProvider,
+  type DragEndEvent,
+  type DragOverEvent,
+} from '@dnd-kit/react';
+import { isSortable } from '@dnd-kit/react/sortable';
 import { Button } from '@/shared/components/ui/button';
 import { Card } from '@/shared/components/ui/card';
 import {
@@ -14,8 +20,14 @@ import {
   APPLICATION_STAGES,
   MANAGE_APPLICATION_STAGE_COLUMNS,
 } from '../../constants/application.constants';
+import { ApplicationStageRow } from './ApplicationStageRow';
+import { useState } from 'react';
+import type { ApplicationStage } from '../../types/application.types';
 
 const JobApplicationSettings = () => {
+  const [applicationStages, setApplicationStages] =
+    useState<ApplicationStage[]>(APPLICATION_STAGES);
+
   return (
     <section className="flex flex-col gap-y-8 px-8">
       <h2 className="text-base font-bold text-gray-700">
@@ -38,16 +50,52 @@ const JobApplicationSettings = () => {
             </TableRow>
           </TableHeader>
 
-          <TableBody>
-            {APPLICATION_STAGES.map((stage) => {
-              return (
-                <TableRow key={stage.value}>
-                  <TableCell>{stage.label}</TableCell>
-                  <TableCell>{stage.category}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
+          <DragDropProvider
+            onDragOver={(event: DragOverEvent) => {
+              event.preventDefault();
+            }}
+            onDragEnd={(event: DragEndEvent) => {
+              console.log('onDragEnd event', event);
+              if (event.canceled) return;
+
+              const { source, target } = event.operation;
+
+              if (!source || !target) return;
+
+              if (isSortable(source) && isSortable(target)) {
+                const { initialIndex } = source;
+                const { index: targetIndex } = target;
+
+                if (initialIndex === targetIndex) return;
+
+                if (initialIndex !== targetIndex) {
+                  setApplicationStages((items) => {
+                    const newItems = [...items];
+                    const [movedItem] = newItems.splice(initialIndex, 1);
+                    newItems.splice(targetIndex, 0, movedItem);
+
+                    return newItems.map((item, index) => ({
+                      ...item,
+                      order_index: index,
+                    }));
+                  });
+                }
+              }
+            }}
+          >
+            <TableBody>
+              {[...applicationStages]
+                .sort(
+                  (firstItem, secondItem) =>
+                    firstItem.order_index - secondItem.order_index,
+                )
+                .map((stage) => {
+                  return (
+                    <ApplicationStageRow key={stage.value} stage={stage} />
+                  );
+                })}
+            </TableBody>
+          </DragDropProvider>
 
           <TableFooter>
             <TableRow>

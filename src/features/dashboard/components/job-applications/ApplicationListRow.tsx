@@ -8,7 +8,7 @@ type StageRowProps = {
   application: ApplicationItem;
 };
 
-export const ApplicationStageListRow = ({ application }: StageRowProps) => {
+export const ApplicationListRow = ({ application }: StageRowProps) => {
   const { ref } = useSortable({
     id: application.id,
     index: application.order_index,

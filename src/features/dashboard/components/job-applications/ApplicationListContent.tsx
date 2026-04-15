@@ -6,7 +6,7 @@ import type {
   ApplicationStage,
   ApplicationItem,
 } from '../../types/application.types';
-import { ApplicationStageListRow } from './ApplicationStageListRow';
+import { ApplicationListRow } from './ApplicationListRow';
 import { useDroppable } from '@dnd-kit/react';
 import { CollisionPriority } from '@dnd-kit/abstract';
 
@@ -18,7 +18,7 @@ type StageRowProps = {
   onToggle: () => void;
 };
 
-export const ApplicationStageListContent = ({
+export const ApplicationListContent = ({
   id,
   stage,
   applications = [],
@@ -55,7 +55,7 @@ export const ApplicationStageListContent = ({
         <>
           {/* Job Application Item Data */}
           {applications.map((application) => (
-            <ApplicationStageListRow
+            <ApplicationListRow
               key={application.id}
               application={application}
             />

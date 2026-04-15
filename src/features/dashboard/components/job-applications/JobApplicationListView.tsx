@@ -10,7 +10,7 @@ import {
   APPLICATION_STAGES,
   JOB_APPLICATION_LIST_COLUMNS,
 } from '../../constants/application.constants';
-import { ApplicationStageListContent } from './ApplicationStageListContent';
+import { ApplicationListContent } from './ApplicationListContent';
 import { useState } from 'react';
 import type { ApplicationItem } from '../../types/application.types';
 import {
@@ -145,7 +145,7 @@ const JobApplicationListView = () => {
         <TableBody>
           {/* Collapsible Job Application Status List */}
           {visibleStages.map((stage) => (
-            <ApplicationStageListContent
+            <ApplicationListContent
               key={stage.value}
               id={stage.value}
               stage={stage}
