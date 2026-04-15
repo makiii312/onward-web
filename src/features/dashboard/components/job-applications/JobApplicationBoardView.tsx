@@ -1,14 +1,10 @@
 import { useState } from 'react';
-import {
-  DragDropProvider,
-  type DragEndEvent,
-  type DragOverEvent,
-} from '@dnd-kit/react';
-import { isSortable } from '@dnd-kit/react/sortable';
+import { DragDropProvider, type DragOverEvent } from '@dnd-kit/react';
 import { APPLICATION_STAGES } from '../../constants/application.constants';
-import { getVisibleStages } from '../../utils/stage.util';
+import { getVisibleStages, sortByNumberKey } from '../../utils';
 import { ApplicationStageColumn } from './ApplicationStageColumn';
 import type { ApplicationItem } from '../../types/application.types';
+import { useApplicationItemDrag } from '../../hooks/useApplicationItemDrag';
 
 const JobApplicationBoardView = () => {
   const visibleStages = getVisibleStages({
@@ -46,6 +42,7 @@ const JobApplicationBoardView = () => {
       order_index: 0,
     },
   ]);
+  const { handleApplicationDragEnd } = useApplicationItemDrag(setApplications);
 
   return (
     <section className="flex flex-col gap-6 px-8 lg:flex-row">
@@ -53,59 +50,7 @@ const JobApplicationBoardView = () => {
         onDragOver={(event: DragOverEvent) => {
           event.preventDefault();
         }}
-        onDragEnd={(event: DragEndEvent) => {
-          console.log('onDragEnd event', event);
-          if (event.canceled) return;
-
-          const { source, target } = event.operation;
-
-          if (!source || !target) return;
-
-          setApplications((prevApplications) => {
-            const updatedApplications = structuredClone(prevApplications);
-
-            const applicationSourceId = source?.id;
-            const applicationTargetStage = (target?.group ??
-              target?.id) as string;
-
-            const draggedItem = updatedApplications.find(
-              (application) => application.id === applicationSourceId,
-            );
-            const applicationSourceStage = draggedItem?.status;
-
-            if (!draggedItem) return prevApplications;
-
-            // Handle application item moving to different application stage column
-            if (applicationSourceStage !== applicationTargetStage) {
-              draggedItem.status = applicationTargetStage;
-            }
-
-            // Handler re-order of application items within same application stage column
-            if (isSortable(source) && isSortable(target)) {
-              const { index: initialIndex } = source.sortable;
-              const { index: updatedIndex } = target.sortable;
-
-              const sameColumnItems = updatedApplications
-                .filter((item) => item.status === applicationSourceStage)
-                .sort(
-                  (firstItem, secondItem) =>
-                    firstItem.order_index - secondItem.order_index,
-                );
-              const movingItem = sameColumnItems[initialIndex];
-              sameColumnItems.splice(initialIndex, 1);
-              sameColumnItems.splice(updatedIndex, 0, movingItem);
-
-              sameColumnItems.forEach((item, index) => {
-                const original = updatedApplications.find((i) => {
-                  return i?.id === item?.id;
-                });
-                if (original) original.order_index = index;
-              });
-            }
-
-            return [...updatedApplications];
-          });
-        }}
+        onDragEnd={handleApplicationDragEnd}
       >
         {visibleStages.map((stage) => (
           <ApplicationStageColumn
@@ -114,10 +59,7 @@ const JobApplicationBoardView = () => {
             stage={stage}
             applications={applications
               .filter((item) => item.status === stage.value)
-              .sort(
-                (firstItem, secondItem) =>
-                  firstItem.order_index - secondItem.order_index,
-              )}
+              .sort(sortByNumberKey('order_index'))}
           />
         ))}
       </DragDropProvider>
