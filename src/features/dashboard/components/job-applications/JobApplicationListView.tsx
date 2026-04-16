@@ -44,7 +44,7 @@ const JobApplicationListView = () => {
     },
     {
       id: '9101',
-      job_title: 'Front End Develper',
+      job_title: 'Front End Developer',
       company_name: 'Tech Co',
       job_platform: 'JobStreet',
       date_applied: 'Mar 3, 2026',
