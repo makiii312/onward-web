@@ -35,7 +35,7 @@ const JobApplicationListView = () => {
     },
     {
       id: '5678',
-      job_title: 'Mid Front End Develper',
+      job_title: 'Mid Front End Developer',
       company_name: 'VIPTutors Co',
       job_platform: 'Indeed',
       date_applied: 'Mar 3, 2026',

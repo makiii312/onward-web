@@ -8,7 +8,6 @@ export const useApplicationStageDrag = (
   >,
 ) => {
   const handleApplicationStageDragEnd = (event: DragEndEvent) => {
-    console.log('onDragEnd event', event);
     if (event.canceled) return;
 
     const { source, target } = event.operation;

@@ -18,36 +18,31 @@ const NavItem = ({
   return (
     <li>
       <Tooltip>
-        <TooltipTrigger className="w-full transition-all duration-300" asChild>
-          <span className="flex w-full">
-            <NavLink
-              to={to}
-              className={({ isActive }) => {
-                return clsx(
-                  'flex w-full items-center place-self-center p-5 transition-all duration-300 hover:text-purple-900',
-                  {
-                    'gap-3': !collapsed,
-                    'justify-center': collapsed,
-                    'text-purple-900': isActive,
-                  },
-                );
-              }}
-            >
-              <Icon />
+        <TooltipTrigger className="w-full transition-all duration-300">
+          <NavLink
+            to={to}
+            className={({ isActive }) => {
+              return clsx(
+                'flex w-full items-center place-self-center p-5 transition-all duration-300 hover:text-purple-900',
+                {
+                  'gap-3': !collapsed,
+                  'justify-center': collapsed,
+                  'text-purple-900': isActive,
+                },
+              );
+            }}
+          >
+            <Icon />
 
-              <span
-                className={clsx(
-                  'whitespace-nowrap transition-all duration-300',
-                  {
-                    'w-0 overflow-hidden opacity-0': collapsed,
-                    'w-auto opacity-100': !collapsed,
-                  },
-                )}
-              >
-                {label}
-              </span>
-            </NavLink>
-          </span>
+            <span
+              className={clsx('whitespace-nowrap transition-all duration-300', {
+                'w-0 overflow-hidden opacity-0': collapsed,
+                'w-auto opacity-100': !collapsed,
+              })}
+            >
+              {label}
+            </span>
+          </NavLink>
         </TooltipTrigger>
         <TooltipContent
           className={clsx('', {

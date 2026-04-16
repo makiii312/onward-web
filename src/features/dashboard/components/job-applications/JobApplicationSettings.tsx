@@ -22,10 +22,15 @@ import { useApplicationStageDrag } from '../../hooks/useApplicationStageDrag';
 import { sortByNumberKey } from '../../utils';
 
 const JobApplicationSettings = () => {
+  const [isEditEnabled, setIsEditEnabled] = useState(false);
   const [applicationStages, setApplicationStages] =
     useState<ApplicationStage[]>(APPLICATION_STAGES);
   const { handleApplicationStageDragEnd } =
     useApplicationStageDrag(setApplicationStages);
+
+  const handleApplicationStageSave = () => {
+    setIsEditEnabled(false);
+  };
 
   return (
     <section className="flex flex-col gap-y-8 px-8">
@@ -60,7 +65,11 @@ const JobApplicationSettings = () => {
                 .sort(sortByNumberKey('order_index'))
                 .map((stage) => {
                   return (
-                    <ApplicationStageRow key={stage.value} stage={stage} />
+                    <ApplicationStageRow
+                      key={stage.value}
+                      stage={stage}
+                      isEditEnabled={isEditEnabled}
+                    />
                   );
                 })}
             </TableBody>
@@ -68,11 +77,38 @@ const JobApplicationSettings = () => {
 
           <TableFooter>
             <TableRow>
-              <TableCell colSpan={2} className="bg-white">
-                <Button variant="outline" size="lg">
-                  <Pencil /> Edit Stages
-                </Button>
-              </TableCell>
+              {isEditEnabled ? (
+                <TableCell colSpan={2} className="bg-white">
+                  <div className="flex justify-end gap-x-2">
+                    <Button
+                      className="min-w-28"
+                      variant="outline"
+                      size="lg"
+                      onClick={() => setIsEditEnabled(false)}
+                    >
+                      Cancel
+                    </Button>
+
+                    <Button
+                      className="min-w-28"
+                      size="lg"
+                      onClick={handleApplicationStageSave}
+                    >
+                      Save
+                    </Button>
+                  </div>
+                </TableCell>
+              ) : (
+                <TableCell colSpan={2} className="bg-white">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={() => setIsEditEnabled(true)}
+                  >
+                    <Pencil /> Edit Stages
+                  </Button>
+                </TableCell>
+              )}
             </TableRow>
           </TableFooter>
         </Table>
