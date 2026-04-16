@@ -18,7 +18,7 @@ const NavItem = ({
   return (
     <li>
       <Tooltip>
-        <TooltipTrigger className="w-full transition-all duration-300" asChild>
+        <TooltipTrigger className="w-full transition-all duration-300">
           <NavLink
             to={to}
             className={({ isActive }) => {

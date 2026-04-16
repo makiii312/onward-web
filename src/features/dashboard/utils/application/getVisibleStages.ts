@@ -1,5 +1,5 @@
-import type { ApplicationStage } from '../types/application.types';
-import { HIDDEN_STAGE_CATEGORIES } from '../constants/application.constants';
+import type { ApplicationStage } from '../../types/application.types';
+import { HIDDEN_STAGE_CATEGORIES } from '../../constants/application.constants';
 
 type GetVisibleStagesParams = {
   stages: ApplicationStage[];
