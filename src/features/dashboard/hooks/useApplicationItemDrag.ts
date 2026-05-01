@@ -7,6 +7,11 @@ import {
   sortByNumberKey,
 } from '../utils';
 
+/**
+ * A custom hook for handling drag and drop functionality for application items.
+ * @param setApplications
+ * @returns
+ */
 export const useApplicationItemDrag = (
   setApplications: React.Dispatch<React.SetStateAction<ApplicationItem[]>>,
 ) => {
