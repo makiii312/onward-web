@@ -20,16 +20,15 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from '@/shared/components/ui/sheet';
 import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
-import { Input } from '@/shared/components/ui/input';
 import { SelectJobPlatform } from './SelectJobPlatform';
 import { SelectAppliedDate } from './SelectAppliedDate';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import RichTextEditor from '@/shared/components/tiptap/RichTextEditor';
 import TextInput from '@/shared/components/form/TextInput';
+import SelectInput from '@/shared/components/form/SelectInput';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -38,6 +37,7 @@ import {
 } from '../../schemas/application.schema';
 import { FieldGroup } from '@/shared/components/ui/field';
 import RichTextCard from '@/shared/components/tiptap/RichTextCard';
+import { EMPLOYMENT_TYPE_OPTIONS, WORK_SETUP_OPTIONS, WORK_SHIFT_OPTIONS } from '../../constants/application.constants';
 
 type JobApplicationViewProps = {
   open: boolean;
@@ -174,24 +174,26 @@ export const JobApplicationView = ({
                 </div>
                 {/* Employment Type */}
                 <div className="grid gap-3">
-                  <TextInput
+                  <SelectInput
                     labelClassName="flex items-center gap-x-2 text-xs font-semibold text-purple-700"
                     control={form.control}
                     name="employment_type"
                     label="Employment Type"
                     icon={<BriefcaseBusiness className="h-4 w-4" />}
                     editable={editable}
+                    options={EMPLOYMENT_TYPE_OPTIONS}
                   />
                 </div>
                 {/* Work Setup */}
                 <div className="grid gap-3">
-                  <TextInput
+                  <SelectInput
                     labelClassName="flex items-center gap-x-2 text-xs font-semibold text-purple-700"
                     control={form.control}
                     name="work_setup"
                     label="Work Setup"
                     icon={<Monitor className="h-4 w-4" />}
                     editable={editable}
+                    options={WORK_SETUP_OPTIONS}
                   />
                 </div>
                 {/* Office Location */}
@@ -207,13 +209,14 @@ export const JobApplicationView = ({
                 </div>
                 {/* Work Shift */}
                 <div className="grid gap-3">
-                  <TextInput
+                  <SelectInput
                     labelClassName="flex items-center gap-x-2 text-xs font-semibold text-purple-700"
                     control={form.control}
                     name="work_shift"
                     label="Work Shift"
                     icon={<Clock className="h-4 w-4" />}
                     editable={editable}
+                    options={WORK_SHIFT_OPTIONS}
                   />
                 </div>
                 {/* Work Schedule */}
