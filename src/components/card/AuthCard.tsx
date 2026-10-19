@@ -1,0 +1,16 @@
+type AuthCardProps = {
+  title: string;
+  children: React.ReactNode;
+};
+
+const AuthCard = ({ title, children }: AuthCardProps) => {
+  return (
+    <div className="flex w-full max-w-md flex-col space-y-4 gap-y-8 rounded-3xl bg-white px-10 py-12 shadow">
+      <h1 className="text-center text-3xl font-bold text-gray-700">{title}</h1>
+
+      <div className="flex flex-col gap-y-12">{children}</div>
+    </div>
+  );
+};
+
+export default AuthCard;
