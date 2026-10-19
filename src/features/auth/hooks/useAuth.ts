@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import { authService } from '@/features/auth/services/auth.service';
-import type { UserSessionData } from '@/shared/types/auth.types';
+import type { UserSessionData } from '@/types/auth.types';
 
 export const useAuth = () => {
   const navigate = useNavigate();
