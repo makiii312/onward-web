@@ -4,7 +4,7 @@ import {
   USER_ID,
   USER_LAST_NAME,
 } from '@/features/auth/constants/auth.constants';
-import type { UserSessionData } from '@/shared/types/auth.types';
+import type { UserSessionData } from '@/types/auth.types';
 
 export const authService = {
   getAccessToken: () => localStorage.getItem(TOKEN_KEY),
