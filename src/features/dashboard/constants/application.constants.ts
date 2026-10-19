@@ -1,3 +1,4 @@
+import { formatSnakeToTitleCase } from '@/shared/lib/stringUtils';
 import type {
   ApplicationStage,
   StageCategory,
@@ -70,15 +71,30 @@ export const STAGE_CATEGORY_COLORS = {
 } as const;
 
 export const EMPLOYMENT_TYPES = [
-  'Full-time',
-  'Part-time',
-  'Contractual',
-  'Freelance',
-  'Internship',
-  'Temporary',
-  'Project-based',
+  'full_time',
+  'part_time',
+  'contractual',
+  'freelance',
+  'internship',
+  'temporary',
+  'project_based',
 ] as const;
 
-export const WORK_SHIFTS = ['Morning', 'Mid', 'Night'] as const;
+export const WORK_SHIFTS = ['morning', 'mid', 'night'] as const;
 
-export const WORK_SETUPS = ['On-site', 'Hybrid', 'Remote'] as const;
+export const WORK_SETUPS = ['on_site', 'hybrid', 'remote'] as const;
+
+export const EMPLOYMENT_TYPE_OPTIONS = EMPLOYMENT_TYPES.map((type) => ({
+  value: type,
+  label: formatSnakeToTitleCase(type),
+}));
+
+export const WORK_SHIFT_OPTIONS = WORK_SHIFTS.map((shift) => ({
+  value: shift,
+  label: formatSnakeToTitleCase(shift),
+}));
+
+export const WORK_SETUP_OPTIONS = WORK_SETUPS.map((setup) => ({
+  value: setup,
+  label: formatSnakeToTitleCase(setup)
+}));

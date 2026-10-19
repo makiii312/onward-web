@@ -12,12 +12,23 @@ type StageColumnProps = {
   id: string;
   stage: ApplicationStage;
   applications?: ApplicationItem[];
+  onNewApplicationAdded?: () => void;
+  onNewApplicationUpdated?: (
+    applicationId: string,
+    updates: Partial<ApplicationItem>,
+  ) => void;
+  onNewApplicationDeleted?: (applicationId: string) => void;
+  onExistingApplicationDeleted?: (applicationId: string) => void;
 };
 
 export const ApplicationStageColumn = ({
   id,
   stage,
   applications = [],
+  onNewApplicationAdded,
+  onNewApplicationUpdated,
+  onNewApplicationDeleted,
+  onExistingApplicationDeleted,
 }: StageColumnProps) => {
   const { ref } = useDroppable({
     id,
@@ -25,8 +36,9 @@ export const ApplicationStageColumn = ({
     accept: ['application'],
     collisionPriority: CollisionPriority.Low,
   });
+
   return (
-    <div ref={ref} className="flex min-w-60 flex-col gap-y-6">
+    <div ref={ref} className="flex max-w-70 min-w-70 flex-col gap-y-6">
       {/* Column Header */}
       <div className="w-full rounded-lg bg-gray-100 p-4">
         <h2 className="text-lg font-semibold text-gray-700">{stage.label}</h2>
@@ -38,10 +50,26 @@ export const ApplicationStageColumn = ({
           <ApplicationCard
             key={applicationItem.id}
             application={applicationItem}
+            onNewUpdate={onNewApplicationUpdated}
+            onNewDelete={
+              onNewApplicationDeleted
+                ? () => onNewApplicationDeleted(applicationItem.id)
+                : undefined
+            }
+            onExistingDelete={
+              onExistingApplicationDeleted
+                ? () => onExistingApplicationDeleted(applicationItem.id)
+                : undefined
+            }
           />
         ))}
 
-        <Button variant="secondary">
+        <Button
+          variant="secondary"
+          onClick={
+            onNewApplicationAdded ? () => onNewApplicationAdded() : undefined
+          }
+        >
           <Plus />
           Add item
         </Button>

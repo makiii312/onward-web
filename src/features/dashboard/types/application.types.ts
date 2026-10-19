@@ -36,7 +36,17 @@ export type ApplicationItem = {
   job_title: string;
   company_name: string;
   job_platform: string;
-  date_applied: string | null;
+  date_applied: Date | string | null;
+  employment_type?: EmploymentType;
+  work_setup?: WorkSetup;
+  office_location?: string;
+  work_shift?: WorkShift;
+  work_schedule?: string;
+  salary_range?: string;
+  asking_salary?: string;
+  required_skills?: string[];
+  job_post_url?: string;
   status: string;
   order_index: number;
+  is_new?: boolean; // flag to indicate if the application is newly added and not yet saved in backend
 };
