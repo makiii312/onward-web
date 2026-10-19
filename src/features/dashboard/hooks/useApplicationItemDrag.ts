@@ -20,7 +20,7 @@ export const useApplicationItemDrag = (
       let updatedApplications = structuredClone(prevApplications);
 
       const applicationSourceId = source.id;
-      const applicationTargetStage = (target?.group ?? target.id) as string;
+      const applicationTargetStage = target.id as string;
 
       const draggedItem = updatedApplications.find(
         (application) => application.id === applicationSourceId,
