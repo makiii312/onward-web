@@ -1,15 +1,15 @@
 import { createBrowserRouter, Navigate } from 'react-router';
 
-import AuthLayout from '@/pages/Auth/AuthLayout.tsx';
-import DashboardLayout from '@/pages/Dashboard/DashboardLayout.tsx';
-import MainDashboardLayout from '@/pages/Dashboard/MainDashboardLayout.tsx';
+import AuthLayout from '@/features/auth/components/AuthLayout';
+import DashboardLayout from '@/features/dashboard/components/DashboardLayout';
+import MainDashboardLayout from '@/features/dashboard/components/MainDashboardLayout';
 
-import LoginPage from '@/pages/Auth/Login.tsx';
-import RegistrationPage from '@/pages/Auth/Registration.tsx';
-import DashboardPage from '@/pages/Dashboard/index.tsx';
-import JobApplicationsPage from '@/pages/Dashboard/JobApplications.tsx';
-import LearningPlansPage from '@/pages/Dashboard/LearningPlans.tsx';
-import SchedulePage from '@/pages/Dashboard/Schedule.tsx';
+import LoginPage from '@/features/auth/pages/Login';
+import RegistrationPage from '@/features/auth/pages/Registration';
+import DashboardPage from '@/features/dashboard/pages/Dashboard';
+import JobApplicationsPage from '@/features/dashboard/pages/JobApplications';
+import LearningPlansPage from '@/features/dashboard/pages/LearningPlans';
+import SchedulePage from '@/features/dashboard/pages/Schedule';
 import { authMiddleware, publicRouteMiddleware } from '@/config/middleware.ts';
 
 export const router = createBrowserRouter([

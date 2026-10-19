@@ -1,4 +1,4 @@
-import { authService } from '@/services/auth.service';
+import { authService } from '@/features/auth/services/auth.service';
 import type { MiddlewareFunction } from 'react-router';
 
 export const authMiddleware: MiddlewareFunction = async ({
