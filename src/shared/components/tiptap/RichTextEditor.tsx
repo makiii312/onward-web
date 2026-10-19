@@ -1,4 +1,4 @@
-import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent, useEditorState } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Placeholder } from '@tiptap/extensions';
 import { TaskItem, TaskList } from '@tiptap/extension-list';
@@ -36,14 +36,18 @@ const RichTextEditor = ({ content = '', onAddNote }: RichTextEditorProps) => {
     },
   });
 
+  const isEditorEmpty = useEditorState({editor, selector: (context) => context?.editor.isEmpty ?? true});
+
   if (!editor) {
     return null; // Prevent rendering until the editor is initialized
   }
+
 
   const handleSaveNote = () => {
     const jsonNote = editor.getJSON();
     console.log('jsonNote', typeof jsonNote, jsonNote);
     onAddNote?.(jsonNote);
+    editor.commands.clearContent(); // Clear the editor content after saving
   };
 
   return (
@@ -58,6 +62,7 @@ const RichTextEditor = ({ content = '', onAddNote }: RichTextEditorProps) => {
           <Button
             className="w-20 rounded-lg border-gray-500 px-2 py-1.5 font-semibold"
             variant="outline"
+            disabled={isEditorEmpty}
             onClick={handleSaveNote}
           >
             Save
